@@ -11,6 +11,7 @@ export const members: Member[] = [
             'https://note.com/ta93abe/rss',
             'https://zenn.dev/ta93abe/feed',
             'https://www.youtube.com/feeds/videos.xml?channel_id=UCdQx4sZu2UVEluRsYG7K0cQ',
+            'https://anchor.fm/s/4dd661e8/podcast/rss',
         ],
     },
 ];
