@@ -12,6 +12,7 @@
     "format": "rome format --write --line-width 120 --quote-style single src/"
   },
   "dependencies": {
+    "daisyui": "^2.15.3",
     "dayjs": "^1.11.3",
     "fs-extra": "^10.1.0",
     "next": "12.1.6",
