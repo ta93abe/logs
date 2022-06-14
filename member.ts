@@ -6,6 +6,11 @@ export const members: Member[] = [
         name: 'ta93abe',
         avatarSrc: '/avatars/avatar.jpg',
         githubId: 'ta93abe',
-        sources: ['https://medium.com/feed/@ta93abe', 'https://note.com/ta93abe/rss', 'https://zenn.dev/ta93abe/feed'],
+        sources: [
+            'https://medium.com/feed/@ta93abe',
+            'https://note.com/ta93abe/rss',
+            'https://zenn.dev/ta93abe/feed',
+            'https://www.youtube.com/feeds/videos.xml?channel_id=UCdQx4sZu2UVEluRsYG7K0cQ',
+        ],
     },
 ];
