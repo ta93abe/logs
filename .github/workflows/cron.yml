@@ -12,4 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: yarn build
+      - run: |
+          pwd
+          ls -la
+          yarn build
