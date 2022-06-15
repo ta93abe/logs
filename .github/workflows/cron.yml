@@ -12,7 +12,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          pwd
-          ls -la
-          yarn build
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Node.js
+        uses: actions/node@v16
+        with:
+          node-version: "16.x"
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: yarn build
+        env:
+          URL_PREFIX: logs
