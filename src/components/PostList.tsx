@@ -16,37 +16,36 @@ const PostLink: React.FC<{ post: Post }> = (props) => {
     const { hostname, origin } = new URL(link);
 
     return (
-        <article className="border-1">
-            <Link href={getGithubProfileURL(member.id)} passHref>
-                <a>
-                    <Image src={member.avatarSrc} alt={member.name} width={35} height={35} className='' />
-                    <div>
-                        <div>{member.name}</div>
-                        <time dateTime={isoDate}>
+        <article className="card glass w-72 bg-primary text-primary-content">
+            <div className="card-body flex flex-col justify-evenly">
+                <Link href={getGithubProfileURL(member.id)} passHref>
+                    <a target='_blank' className="flex items-end justify-between">
+                        <Image src={member.avatarSrc} alt={member.name} width={35} height={35} layout='fixed' className='inline-block rounded-full' />
+                        {dateMilliSeconds && dateMilliSeconds > Date.now() - 86400000 * 3 && (
+                            <div className='badge badge-primary'>NEW</div>
+                        )}   
+                        <time dateTime={isoDate} className='text-xs'>
                             {dayjs(isoDate).fromNow()}
                         </time>
-                    </div>
-                </a>
-            </Link>
-            <Link href={link} className='justify-between'>
-                <a>
-                    <h2>{title}</h2>
-                    {hostname && (
-                        <div>
-                            <Image
-                            src={getFaviconSrcFromOrigin(origin)}
-                            alt={hostname}
-                            width={14}
-                            height={14}
-                            />
-                            <span>{hostname}</span>
-                        </div>
-                    )}
-                </a>
-            </Link>
-            {dateMilliSeconds && dateMilliSeconds > Date.now() - 86400000 * 3 && (
-                <div>NEW</div>
-            )}
+                    </a>
+                </Link>
+                <Link href={link} className=''>
+                    <a target='_blank' className="space-y-2">
+                        <h2 className="card-title">{title}</h2>
+                        {hostname && (
+                            <div className="flex space-x-2">
+                                <Image
+                                    src={getFaviconSrcFromOrigin(origin)}
+                                    alt={hostname}
+                                    width={16}
+                                    height={16}
+                                />
+                                <div className="text-sm">{hostname}</div>
+                            </div>
+                        )}
+                    </a>
+                </Link>
+            </div>
         </article>
     );
 }
@@ -60,21 +59,21 @@ export const PostList: React.FC<{ items: Post[] }> = (props) => {
 
     return (
         <>
-        <div>
-            {props.items.slice(0, displayItemsCount).map((item, i) => (
-                <PostLink key={`post-${i}`} post={item} />
-            ))}
-        </div>
-        {canLoadMore && (
-        <div className="post-list-load">
-          <button
-            onClick={() => setDisplayItemsCount(displayItemsCount + 32)}
-            className="post-list-load__button"
-          >
-            LOAD MORE
-          </button>
-        </div>
-      )}
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-items-center'>
+                {props.items.slice(0, displayItemsCount).map((item, i) => (
+                    <PostLink key={`post-${i}`} post={item} />
+                ))}
+            </div>
+            {canLoadMore && (
+                <div className="">
+                    <button
+                        onClick={() => setDisplayItemsCount(displayItemsCount + 32)}
+                        className=""
+                    >
+                        LOAD MORE
+                    </button>
+                </div>
+            )}
         </>
     );
 }

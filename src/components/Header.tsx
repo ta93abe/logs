@@ -2,9 +2,7 @@ import { config } from '@/site.config';
 import Link from 'next/link';
 
 export const Header: React.FC = () => (
-	<header className="flex justify-start
-    
-    items-center px-4 py-6 sm:px-6 md:justify-between md:space-x-20">
+	<header className="flex justify-between items-center px-4 py-6 sm:px-6 md:space-x-20">
         <div className=''>logs</div>
         <div>
             {config.headers.map((header, i) => {
